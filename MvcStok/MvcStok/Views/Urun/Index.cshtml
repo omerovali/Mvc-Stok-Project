@@ -1,0 +1,55 @@
+﻿@using MvcStok.Models.Entity
+@model List<TBLURUNLER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>URUNID</th>
+            <th>URUNAD</th>
+            <th>MARKASI</th>
+            <th>KATEGORİ</th>
+            <th>FIYAT</th>
+            <th>STOK</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var urun in Model)
+        {
+            <tr>
+                <th>@urun.URUNID</th>
+                <td>@urun.URUNAD</td>
+                <td>@urun.MARKA</td>
+                <td>@urun.TBLKATEGORILER.KATEGORIAD</td>
+                <td>@urun.FIYAT</td>
+                <td>@urun.STOK</td>
+                <td><a href="/Urun/SIL/@urun.URUNID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Urun/UrunGetir/@urun.URUNID" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+
+<a href="/Urun/UrunEkle/" class="btn btn-primary">YENİ URUN EKLE</a>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+<script>
+    $('#tbl1').DataTable();
+</script>
+
